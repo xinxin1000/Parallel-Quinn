@@ -1,0 +1,28 @@
+{
+    "tasks": [
+        {
+            "type": "shell", //执行的是shell命令
+            "label": "mpicc build active file",  //任务的名字，在launch.json中会用到 
+            "command": "/usr/bin/mpicc",  //命令是mpicc
+            "args": [
+                "-g",  //gdb调试用
+                "${file}",  //文件名
+                "-o",  //输出可执行文件
+                "${fileDirname}/${fileBasenameNoExtension}"  //可执行文件名
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"  //使用gcc捕获错误
+            ],
+            "group": { 
+                "kind": "build",  
+                "isDefault": true
+                // 任务分组
+                // 在build组的任务，可以通过command palette 输入run build task来运行
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
